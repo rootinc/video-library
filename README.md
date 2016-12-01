@@ -36,3 +36,4 @@ Now you can visit the site at [http://localhost:9000](http://localhost:9000)! :t
 5. Keep track of what videos have been watched, so when the page is reloaded, the browser remembers (use Local Storage for this).
 
 ![Desktop Mockup](http://rootincapps.s3.amazonaws.com/desktop.png)
+![Mobile Mockup](http://rootincapps.s3.amazonaws.com/mobile-mockup.png)
