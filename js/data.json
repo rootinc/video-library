@@ -1,0 +1,22 @@
+[
+  {
+    "video":"http://rootincapps.s3.amazonaws.com/vid/video1.mp4",
+    "thumbnail":"http://rootincapps.s3.amazonaws.com/img/video1.jpg",
+    "label":"Video 1"
+  },
+  {
+    "video":"http://rootincapps.s3.amazonaws.com/vid/video2.mp4",
+    "thumbnail":"http://rootincapps.s3.amazonaws.com/img/video2.jpg",
+    "label":"Video 2"
+  },
+  {
+    "video":"http://rootincapps.s3.amazonaws.com/vid/video3.mp4",
+    "thumbnail":"http://rootincapps.s3.amazonaws.com/img/video3.jpg",
+    "label":"Video 3"
+  },
+  {
+    "video":"http://rootincapps.s3.amazonaws.com/vid/video4.mp4",
+    "thumbnail":"http://rootincapps.s3.amazonaws.com/img/video4.jpg",
+    "label":"Video 4"
+  }
+]
