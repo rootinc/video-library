@@ -2,5 +2,18 @@
 @import "bourbon/bourbon";
 @import "grid-settings";
 @import "neat/neat";
-
 @import "base";
+
+.video-library {
+    @include outer-container;
+    .videos-container {
+        @include span-columns(8);
+    }
+    .video {
+        @include span-columns(4);
+    }
+    .thumbnail {
+        width:40vw;
+        height: auto;
+    }
+}

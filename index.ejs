@@ -9,7 +9,7 @@ $.ajax({
     dataType: 'json',
     success: function (data) { 
         $.each(data, function(index, element) {
-            items.push( "<div id='video'><img src='" + element.thumbnail + "' alt='" + element.label + "'></div>" );
+            items.push( "<div class='video'><img class='thumbnail' src='" + element.thumbnail + "'></div>" );
         });
         
         $( "<div/>", {
