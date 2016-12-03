@@ -1,4 +1,28 @@
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+    var items = [];
+$.ajax({ 
+    type: 'GET', 
+    url: 'js/data.json', 
+    data: { get_param: 'value' }, 
+    dataType: 'json',
+    success: function (data) { 
+        $.each(data, function(index, element) {
+            items.push( "<div id='video'><img src='" + element.thumbnail + "' alt='" + element.label + "'></div>" );
+        });
+        
+        $( "<div/>", {
+            "class": "videos-container",
+            html: items.join( "" )
+          }).appendTo( "#results" );
+            }
+});
+</script>
+
+
 <section class="video-library">
   <div class="container">
+      <div id="results"></div>
   </div>
 </section>
