@@ -1,4 +1,6 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="js/jquerymodal/jquery.modal.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/jquerymodal/jquery.modal.css" type="text/css" media="screen" />
 
 <script>
     var items = [];
@@ -9,7 +11,21 @@ $.ajax({
     dataType: 'json',
     success: function (data) { 
         $.each(data, function(index, element) {
-            items.push( "<div class='video'><figure><img class='thumbnail' src='" + element.thumbnail + "'><figcaption>"+element.label+"</figcaption></figure></div>" );
+            items.push( "\
+                <div class='video'> \
+                    <figure> \
+                        <a class='openmodal' href='#ex"+index+"' rel='modal:open'> \
+                            <img class='thumbnail' src='" + element.thumbnail + "'> \
+                        </a> \
+                        <figcaption>"+element.label+"</figcaption> \
+                    </figure> \
+                    <div class = 'videomodal fade-in' id='ex"+index+"' style='display:none;'> \
+                        <video controls> \
+                          <source src='"+element.video+"' type='video/mp4'> \
+                        Your browser does not support the video tag. \
+                        </video> \
+                    </div> \
+                </div>" );
         });
         
         $( "<div/>", {
@@ -18,6 +34,7 @@ $.ajax({
           }).appendTo( "#container" );
             }
 });
+ 
 </script>
 
 
