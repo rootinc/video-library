@@ -9,20 +9,19 @@ $.ajax({
     dataType: 'json',
     success: function (data) { 
         $.each(data, function(index, element) {
-            items.push( "<div class='video'><img class='thumbnail' src='" + element.thumbnail + "'></div>" );
+            items.push( "<div class='video'><figure><img class='thumbnail' src='" + element.thumbnail + "'><figcaption>"+element.label+"</figcaption></figure></div>" );
         });
         
         $( "<div/>", {
             "class": "videos-container",
             html: items.join( "" )
-          }).appendTo( "#results" );
+          }).appendTo( "#container" );
             }
 });
 </script>
 
 
 <section class="video-library">
-  <div class="container">
-      <div id="results"></div>
+  <div class="container" id="container">
   </div>
 </section>
