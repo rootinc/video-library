@@ -4,16 +4,36 @@
 @import "neat/neat";
 @import "base";
 
-.video-library {
-    @include outer-container;
-    .videos-container {
-        @include span-columns(8);
+$mobile: new-breakpoint(max-width 1000px);
+$desktop: new-breakpoint(min-width 1000px);
+
+
+.video {
+    
+    @include media($mobile) {
+        @include span-columns(2);
+        @include omega(1n);
+        border-radius: 10px;
+        text-align: center;
+        img {
+            width: 100vw;
+            height: auto;
+            margin: auto;
+            padding: 5vw;
+        }
     }
-    .video {
-        @include span-columns(4);
+    
+    @include media($desktop) {
+        @include span-columns(6);
+        @include omega(2n);
+        border-radius: 10px;
+        text-align: center;
+        img {
+            width: 40vw;
+            height: auto;
+            margin: auto;
+            padding: 1vw;
+        }
     }
-    .thumbnail {
-        width:40vw;
-        height: auto;
-    }
+    
 }
