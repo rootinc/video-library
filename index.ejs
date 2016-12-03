@@ -3,6 +3,9 @@
 <link rel="stylesheet" href="css/jquerymodal/jquery.modal.css" type="text/css" media="screen" />
 
 <script>
+    function videoEnded() {
+        $('#closemodal').click();
+    }
     var items = [];
 $.ajax({ 
     type: 'GET', 
@@ -14,13 +17,14 @@ $.ajax({
             items.push( "\
                 <div class='video'> \
                     <figure> \
-                        <a class='openmodal' href='#ex"+index+"' rel='modal:open'> \
+                        <a href='#ex"+index+"' rel='modal:open'> \
                             <img class='thumbnail' src='" + element.thumbnail + "'> \
                         </a> \
+                        <a id='closemodal' href='#ex"+index+"' rel='modal:close'></a> \
                         <figcaption>"+element.label+"</figcaption> \
                     </figure> \
                     <div class = 'videomodal fade-in' id='ex"+index+"' style='display:none;'> \
-                        <video controls> \
+                        <video controls onended='videoEnded()'> \
                           <source src='"+element.video+"' type='video/mp4'> \
                         Your browser does not support the video tag. \
                         </video> \
