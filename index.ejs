@@ -8,6 +8,7 @@
         localStorage.setItem(test, true);
     }
     var items = [];
+    
 $.ajax({ 
     type: 'GET', 
     url: 'js/data.json', 
@@ -16,20 +17,17 @@ $.ajax({
     cache: false,
     success: function (data) { 
         $.each(data, function(index, element) {
-            if (localStorage.getItem('ex0') != null) {
-                $(".figure").html("Hello <b>world</b>!");
-            }
             items.push( "\
                 <div class='video'> \
                     <figure> \
-                        <a href='#ex"+index+"' rel='modal:open'> \
-                            <img class='thumbnail' src='" + element.thumbnail + "'> \
+                        <a href='#ex"+index+"' rel='modal:open' class='open-modal' onClick='$(\"#video0\").get(0).play();'>\
+                            <img id='#thumb"+index+"' class='thumbnail' src='" + element.thumbnail + "'> \
                         </a> \
                         <a id='closemodal' href='#ex"+index+"' rel='modal:close'></a> \
                         <figcaption id='caption"+index+"'>"+element.label+"</figcaption> \
                     </figure> \
                     <div class = 'videomodal' id='ex"+index+"' style='display:none;'> \
-                        <video controls onended='videoEnded(\"ex"+index+"\")'> \
+                        <video id = 'video"+index+"' controls onended='videoEnded(\"ex"+index+"\")'> \
                           <source src='"+element.video+"' type='video/mp4'> \
                         Your browser does not support the video tag. \
                         </video> \
@@ -41,7 +39,13 @@ $.ajax({
             "class": "videos-container",
             html: items.join( "" )
           }).appendTo( "#container" );
+        
+        for(var i = 0; i<items.length; i++){
+            if (localStorage.getItem('ex'+i+'') != null) {
+               $('#caption'+i+'').append(" (watched)");
             }
+        }
+    }
 });
 </script>
 
@@ -51,11 +55,3 @@ $.ajax({
   </div>
 </section>
 
-<script>
-
-$(window).load(function(){
-if (localStorage.getItem('ex0') != null) {
-    $('#caption0').html('<b>what</b>')
-}
-});
-</script>
