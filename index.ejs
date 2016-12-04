@@ -3,8 +3,9 @@
 <link rel="stylesheet" href="css/jquerymodal/jquery.modal.css" type="text/css" media="screen" />
 
 <script>
-    function videoEnded() {
+    function videoEnded(test) {
         $('#closemodal').click();
+        localStorage.setItem(test, true);
     }
     var items = [];
 $.ajax({ 
@@ -12,8 +13,12 @@ $.ajax({
     url: 'js/data.json', 
     data: { get_param: 'value' }, 
     dataType: 'json',
+    cache: false,
     success: function (data) { 
         $.each(data, function(index, element) {
+            if (localStorage.getItem('ex0') != null) {
+                $(".figure").html("Hello <b>world</b>!");
+            }
             items.push( "\
                 <div class='video'> \
                     <figure> \
@@ -21,10 +26,10 @@ $.ajax({
                             <img class='thumbnail' src='" + element.thumbnail + "'> \
                         </a> \
                         <a id='closemodal' href='#ex"+index+"' rel='modal:close'></a> \
-                        <figcaption>"+element.label+"</figcaption> \
+                        <figcaption id='caption"+index+"'>"+element.label+"</figcaption> \
                     </figure> \
-                    <div class = 'videomodal fade-in' id='ex"+index+"' style='display:none;'> \
-                        <video controls onended='videoEnded()'> \
+                    <div class = 'videomodal' id='ex"+index+"' style='display:none;'> \
+                        <video controls onended='videoEnded(\"ex"+index+"\")'> \
                           <source src='"+element.video+"' type='video/mp4'> \
                         Your browser does not support the video tag. \
                         </video> \
@@ -38,11 +43,19 @@ $.ajax({
           }).appendTo( "#container" );
             }
 });
- 
 </script>
 
 
-<section class="video-library">
+<section class="video-library fade-in">
   <div class="container" id="container">
   </div>
 </section>
+
+<script>
+
+$(window).load(function(){
+if (localStorage.getItem('ex0') != null) {
+    $('#caption0').html('<b>what</b>')
+}
+});
+</script>
