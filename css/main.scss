@@ -2,5 +2,84 @@
 @import "bourbon/bourbon";
 @import "grid-settings";
 @import "neat/neat";
-
 @import "base";
+
+$mobile: new-breakpoint(max-width 1000px);
+$desktop: new-breakpoint(min-width 1000px);
+
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+ 
+.fade-in {
+	opacity:0; 
+	-webkit-animation:fadeIn ease-in 1; 
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+ 
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+ 
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	animation-duration:1s;
+}
+
+.video {
+    
+    @include media($mobile) {
+        @include span-columns(2);
+        @include omega(1n);
+        text-align: center;
+        margin: 5vw;
+        img {
+            width: 90vw;
+            height: auto;
+            margin: auto;
+        }
+        figure{
+            height: auto;
+            margin: auto;
+        }
+        figure figcaption{
+            font-weight: bold;
+            text-align: left;
+            font-size: 2.75em;
+        }
+    }
+    
+    @include media($desktop) {
+        @include animation(scale 1.0s ease-in, slide 2.0s ease);
+        @include span-columns(6);
+        @include omega(2n);
+        text-align: center;
+        img, figcaption {
+            width: 35vw;
+            height: auto;
+            margin: auto;
+        }
+        figcaption{
+            font-weight: bold;
+            text-align: left;
+            font-size: 1.5em;
+        }
+        
+    }
+    
+}
+
+
+video{
+    @include media($mobile) {
+        width: 90vw;
+        height: auto;
+    }
+    
+    @include media($desktop) {
+        width: 47vw;
+        height: auto;
+        margin: 0 auto;
+    }
+}
