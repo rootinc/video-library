@@ -4,3 +4,20 @@
 @import "neat/neat";
 
 @import "base";
+
+.container {
+	margin: auto;
+	width: 80%;
+}
+
+.video { 
+		@include span-columns(6 of 12);
+		@include media($mobile) {
+		  @include span-columns(12 of 12);
+		}
+		.thumbnail {
+			width: 100%
+		}
+	}
+
+
